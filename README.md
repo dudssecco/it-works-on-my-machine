@@ -48,7 +48,6 @@ DB_HOST=db
 DB_USER=root
 DB_PASSWORD=rootpassword
 DB_NAME=mydb
-
 ```
 
 ## Database
