@@ -2,6 +2,8 @@
 
 A repository dedicated to debunking the legendary developer error: "It works on my machine." If you've ever spent hours trying to understand why something runs perfectly in your local environment but crashes spectacularly on the server, welcome to the club. Here, we explore the root causes of this issue and how to prevent it using DevOps best practices, containers, CI/CD, and more.
 
+By leveraging Docker and Docker Compose, I was able to avoid the infamous "It works on my machine" dilemma. These tools ensure that both the Node.js backend and the MySQL database run in isolated, reproducible containers. Docker packages the application and all its dependencies into lightweight containers, making it easy to run anywhere, whether it’s on your local machine or a remote server. Docker Compose takes it a step further, effortlessly orchestrating the multi-container setup, ensuring that the database and backend communicate seamlessly without any environment mismatches. With this setup, the code runs predictably across all environments, saving you from endless troubleshooting sessions.
+
 ## Technologies Utilized:
 
 - Node.js: For the backend of the application.
