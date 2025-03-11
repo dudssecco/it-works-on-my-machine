@@ -1,0 +1,15 @@
+# Ignora a pasta node_modules
+node_modules/
+
+# Ignora o .DS_Store (gerado pelo macOS)
+.DS_Store
+
+# Ignora os logs
+*.log
+
+# Ignora o diretório de builds ou dist (se tiver algum)
+dist/
+build/
+
+# Outros arquivos temporários que não são necessários
+*.env

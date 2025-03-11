@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - mynetwork
+    restart: always
+
+  backend:
+    build:
+      context: ./src
+    container_name: backend-container
+    environment:
+      DB_HOST: mysql # Certifique-se de que o nome do serviço seja "mysql"
+      DB_USER: root
+      DB_PASSWORD: rootpassword
+      DB_NAME: mydb
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    networks:
+      - mynetwork
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+    entrypoint: ["sh", "-c", "/wait-for-it.sh mysql:3306 -t 60 -- npm start"]
+
+networks:
+  mynetwork:
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver: local

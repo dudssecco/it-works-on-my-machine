@@ -1,0 +1,18 @@
+# Ignora a pasta node_modules
+node_modules/
+
+# Ignora o .DS_Store (gerado pelo macOS)
+.DS_Store
+
+# Ignora logs
+*.log
+
+# Ignora arquivos de configuração do VSCode (se estiver usando)
+.vscode/
+
+# Ignora o diretório de builds ou dist (se tiver algum)
+dist/
+build/
+
+# Outros arquivos temporários que não são necessários
+*.env
